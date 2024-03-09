@@ -14,7 +14,7 @@
     <style>
         /* Personalización del color de fondo del navbar */
         .custom-navbar {
-            background-color: #dc78ea;
+            background-color: #1770ca;
         }
 
         /* Estilo de los botones en el navbar */
@@ -23,47 +23,72 @@
         }
 
         .custom-navbar .nav-link {
-            border: 2px solid #6e1e6a;
-            color: #6e1e6a;
+            border: 2px solid #0b5392; /* Violeta oscuro */
+            color: #0b5392; /* Violeta oscuro */
             border-radius: 5px;
             padding: 8px 15px;
             transition: background-color 0.3s, color 0.3s;
         }
 
         .custom-navbar .nav-link:hover {
-            background-color: #920b8b;
-            color: #fff; 
+            background-color: #1b0db4; /* Violeta oscuro al pasar el ratón */
+            color: #fff; /* Texto blanco al pasar el ratón */
         }
     </style>
-    <title>Mi Proyecto Python-Django</title>
+    <title>Sol e Ibo</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
-        <a class="navbar-brand" href="{% url 'inicio' %}">CursoPython</a>
+        <a class="navbar-brand" href="{% url 'inicio' %}">Coderhouse - Python</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'cliente' %}">Clientes</a>
+                    <a class="nav-link" href="{% url 'romances' %}">Libros Romance</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'producto' %}">Producto</a>
+                    <a class="nav-link" href="{% url 'fantasias' %}">Libros Fantasía</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'envio' %}">Envío</a>
+                    <a class="nav-link" href="{% url 'acerca_de_mi' %}">Acerca de nosotros</a>
                 </li>
+
+                {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'busquedaCliente' %}">Buscar Cliente</a>
+                    <span class="text-light"> Hola <strong>{{request.user.first_name}}</strong>!</span>
                 </li>
+                </div>
+                <div class="container">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'editar_perfil' %}"><span class="text-primary">Perfil</span></a>
+                </li>
+                </div>
+                <div class="container">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                </div>
+                {% else %}
+                <div class="container">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}"><span class="text-primary">Login</span></a>
+                </li>
+                </div>
+                <div class="container">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'registro' %}"><span class="text-primary">Registrate</span></a>
+                </li> 
+                {% endif %}
             </ul>
         </div>
     </nav>
     <div class="container mt-4">
 
         {% block contenido%}
-        
+
+    
         {% endblock %}
     </div>
 </body>

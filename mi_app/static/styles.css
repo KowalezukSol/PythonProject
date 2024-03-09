@@ -38,7 +38,7 @@
 
 /* Estilos para el botón de enviar */
 .mi-boton {
-    background-color: #f19edf;
+    background-color: #125ce4;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -46,4 +46,10 @@
     cursor: pointer;
 }
 
-/* Estilos adicionales según sea necesario */
+/* Estilos adicionales según sea necesario */
+
+@media screen and (max-width: 800px) {
+    .left, .main, .right {
+      width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}
